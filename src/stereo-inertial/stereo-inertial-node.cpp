@@ -58,8 +58,8 @@ StereoInertialNode::StereoInertialNode(ORB_SLAM3::System *SLAM, const string &st
     }
 
     subImu_ = this->create_subscription<ImuMsg>("imu", 1000, std::bind(&StereoInertialNode::GrabImu, this, _1));
-    subImgLeft_ = this->create_subscription<ImageMsg>("camera/left", 100, std::bind(&StereoInertialNode::GrabImageLeft, this, _1));
-    subImgRight_ = this->create_subscription<ImageMsg>("camera/right", 100, std::bind(&StereoInertialNode::GrabImageRight, this, _1));
+    subImgLeft_ = this->create_subscription<ImageMsg>("/left/image_rect", 100, std::bind(&StereoInertialNode::GrabImageLeft, this, _1)); // oak topic
+    subImgRight_ = this->create_subscription<ImageMsg>("/right/image_rect", 100, std::bind(&StereoInertialNode::GrabImageRight, this, _1)); // oak topic
 
     syncThread_ = new std::thread(&StereoInertialNode::SyncWithImu, this);
 }

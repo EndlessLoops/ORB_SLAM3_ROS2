@@ -9,10 +9,10 @@ MonocularSlamNode::MonocularSlamNode(ORB_SLAM3::System* pSLAM)
 {
     m_SLAM = pSLAM;
     // std::cout << "slam changed" << std::endl;
-    m_image_subscriber = this->create_subscription<ImageMsg>(
-        "camera",
-        10,
-        std::bind(&MonocularSlamNode::GrabImage, this, std::placeholders::_1));
+    //m_image_subscriber = this->create_subscription<ImageMsg>("camera",10,
+    //    std::bind(&MonocularSlamNode::GrabImage, this, std::placeholders::_1));
+    m_image_subscriber = this->create_subscription<ImageMsg>("/camera/color/image_raw",10,
+        std::bind(&MonocularSlamNode::GrabImage, this, std::placeholders::_1)); // d435i topic
     std::cout << "slam changed" << std::endl;
 }
 

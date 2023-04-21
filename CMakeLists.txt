@@ -23,6 +23,7 @@ find_package(message_filters REQUIRED)
 find_package(Sophus REQUIRED)
 find_package(Pangolin REQUIRED)
 find_package(ORB_SLAM3 REQUIRED)
+find_package(OpenCV 4.0 QUIET)
 
 include_directories(
   include
@@ -51,13 +52,13 @@ add_executable(stereo
   src/stereo/stereo-slam-node.cpp
 )
 ament_target_dependencies(stereo rclcpp sensor_msgs cv_bridge message_filters
-ORB_SLAM3 Pangolin)
+ORB_SLAM3 Pangolin OpenCV)
 
 add_executable(stereo-inertial
   src/stereo-inertial/stereo-inertial.cpp
   src/stereo-inertial/stereo-inertial-node.cpp
 )
-ament_target_dependencies(stereo-inertial rclcpp sensor_msgs cv_bridge ORB_SLAM3 Pangolin)
+ament_target_dependencies(stereo-inertial rclcpp sensor_msgs cv_bridge ORB_SLAM3 Pangolin OpenCV)
 
 install(TARGETS mono rgbd stereo stereo-inertial
   DESTINATION lib/${PROJECT_NAME})

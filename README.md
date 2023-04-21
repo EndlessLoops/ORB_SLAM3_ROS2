@@ -1,3 +1,9 @@
+## Update 
+
+- New testing Background: Ubuntu 22.04 + ROS Humble + OpenCV 4.5.4
+
+- Install Tutorials：https://www.ncnynl.com/archives/202304/5868.html
+
 # ORB_SLAM3_ROS2
 This repository is ROS2 wrapping to use ORB_SLAM3
 
